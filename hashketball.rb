@@ -178,3 +178,22 @@ def player_stats(player_inq)
   player_stat
 end
 
+def big_shoe_rebounds
+  biggest_shoe_size = 0
+  big_shoe_player = ""
+  big_shoe_rebounds = 0
+  game_hash.each do |k0, v0|
+    v0.each do |k1,v1|
+       next unless k1 == :players    
+      v1.each do |player_arr|
+
+        if player_arr[:shoe] > biggest_shoe_size
+          biggest_shoe_size = player_arr[:shoe]
+          big_shoe_player = player_arr[:player_name]
+          big_shoe_rebounds = player_arr[:rebounds]
+        end
+      end
+     end
+  end
+  big_shoe_rebounds
+end
