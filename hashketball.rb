@@ -197,3 +197,22 @@ def big_shoe_rebounds
   end
   big_shoe_rebounds
 end
+
+def most_points_scored
+  most_points = 0
+  most_points_player = ""
+
+  game_hash.each do |k0, v0|
+    v0.each do |k1,v1|
+       next unless k1 == :players    
+      v1.each do |player_arr|
+
+        if player_arr[:points] > most_points
+          most_points = player_arr[:points]
+          most_points_player = player_arr[:player_name]
+        end
+      end
+     end
+  end
+  most_points_player
+end
