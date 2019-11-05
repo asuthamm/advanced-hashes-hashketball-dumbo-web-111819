@@ -239,3 +239,23 @@ def winning_team
   end
   most_points_team
 end
+
+
+def player_with_longest_name
+  longgest_name = 0
+  longgest_name_player = ""
+
+  game_hash.each do |k0, v0|
+    v0.each do |k1,v1|
+       next unless k1 == :players    
+      v1.each do |player_arr|
+
+        if player_arr[:player_name].length > longgest_name
+          longgest_name = player_arr[:player_name].length
+          longgest_name_player = player_arr[:player_name]
+        end
+      end
+     end
+  end
+  longgest_name_player
+end
