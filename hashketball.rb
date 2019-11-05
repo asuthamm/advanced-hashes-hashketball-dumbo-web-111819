@@ -216,3 +216,26 @@ def most_points_scored
   end
   most_points_player
 end
+
+def winning_team
+  most_points_sum = 0
+  most_points_team = ""
+  current_team = ""
+  
+  game_hash.each do |k0, v0|
+    current_team = v0[:team_name]
+    sum = 0
+    v0.each do |k1,v1|
+       next unless k1 == :players    
+      v1.each do |player_arr|
+        sum += player_arr[:points]
+      end
+    end
+
+    if sum > most_points_sum
+      most_points_sum = sum
+      most_points_team = current_team
+    end
+  end
+  most_points_team
+end
